@@ -105,14 +105,44 @@
 
 
 
-        <StackPanel>
-            <Button Command="{Binding MessageCommand}" Content="Send Message" FontSize="35" Height="50"></Button>
-            <!--<Button Command="{Binding OpenNewWindow}" Content="Open Window" FontSize="35" Height="50"></Button>-->
+        <StackPanel Name="myStackPanel">
+            <!--<Button Command="{Binding MessageCommand}" Content="Send Message" FontSize="35" Height="50"></Button>
+            --><!--<Button Command="{Binding OpenNewWindow}" Content="Open Window" FontSize="35" Height="50"></Button>--><!--
             <Button Content="Open Window" FontSize="35" Height="50">
                 <Button.InputBindings>
                     <MouseBinding Gesture="RightDoubleClick" Command="{Binding OpenNewWindow}" ></MouseBinding>
                 </Button.InputBindings>
-            </Button>
+            </Button>-->
+            <!--<Slider  Minimum="10" Maximum="70" Value="{Binding Age,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ></Slider>
+            <Button  Height="50" Content="{Binding Age,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Command="{Binding ShowDataCommand}"></Button>-->
+
+
+            <!--<TextBox FontSize="25" FontWeight="ExtraBlack">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding ShowDataCommand}"></KeyBinding>
+                </TextBox.InputBindings>
+            </TextBox>-->
+
+
+            <TextBox x:Name="usernameTxtB"
+                     BorderThickness="2" HorizontalAlignment="Center" Width="300"
+                     BorderBrush="SpringGreen"
+                     TabIndex="0" FontSize="25" FontWeight="ExtraBlack">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding UsernameEnterCommand}" CommandParameter="{Binding ElementName=myStackPanel}"></KeyBinding>
+                </TextBox.InputBindings>
+            </TextBox>
+            <TextBox x:Name="passwordTxtB"
+                     BorderThickness="2" HorizontalAlignment="Center" Width="300"
+                     BorderBrush="SpringGreen"
+                     TabIndex="1" FontSize="25" FontWeight="ExtraBlack">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding PasswordEnterCommand}" CommandParameter="{Binding ElementName=myStackPanel}"></KeyBinding>
+                </TextBox.InputBindings>
+            </TextBox>
+
+
+            <Button Name="submitBtn">Submit</Button>
             
         </StackPanel>
         
