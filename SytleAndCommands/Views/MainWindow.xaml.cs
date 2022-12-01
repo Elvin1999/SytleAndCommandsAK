@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SytleAndCommands.Commands;
 
 namespace SytleAndCommands
 {
@@ -24,10 +25,24 @@ namespace SytleAndCommands
         {
             public int TheValue { get; set; }
         }
+        public MessageCommand MessageCommand { get; set; }
+        public MessageCommand OpenNewWindow { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new DataObject();
+            //DataContext = new DataObject();
+            this.DataContext = this;
+
+            MessageCommand = new MessageCommand(() =>
+            {
+                MessageBox.Show("I clicked to Send Message");
+            });
+
+            OpenNewWindow = new MessageCommand(() =>
+            {
+                MessageBox.Show("I opened New Window");
+            });
+
         }
     }
 }

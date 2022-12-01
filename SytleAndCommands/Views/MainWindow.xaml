@@ -50,7 +50,7 @@
     </Window.Resources>
     
     <Grid>
-        <Grid.Resources>
+        <!--<Grid.Resources>
             <Style TargetType="{x:Type ProgressBar}">
                 <Setter Property="Foreground" Value="Green" />
             </Style>
@@ -65,10 +65,10 @@
             <Slider x:Name="MySlider" Margin="5" Minimum="0" Maximum="100"
                 Value="{Binding TheValue}"/>
             <ProgressBar Grid.Row="1" Value="{Binding TheValue}" />
-        </Grid>
-        <StackPanel>
+        </Grid>-->
+        <!--<StackPanel>
 
-            <!--<CheckBox x:Name="myCheckBox" Style="{StaticResource checkStyle}" Content="No" FontSize="15" >
+            --><!--<CheckBox x:Name="myCheckBox" Style="{StaticResource checkStyle}" Content="No" FontSize="15" >
                 
             </CheckBox>
             <TextBlock Margin="0,30,0,0" FontSize="30" Style="{StaticResource boldStyle}">Hello World</TextBlock>
@@ -99,8 +99,22 @@
 
                 </TextBlock>
 
-            </StackPanel>-->
+            </StackPanel>--><!--
 
+        </StackPanel>-->
+
+
+
+        <StackPanel>
+            <Button Command="{Binding MessageCommand}" Content="Send Message" FontSize="35" Height="50"></Button>
+            <!--<Button Command="{Binding OpenNewWindow}" Content="Open Window" FontSize="35" Height="50"></Button>-->
+            <Button Content="Open Window" FontSize="35" Height="50">
+                <Button.InputBindings>
+                    <MouseBinding Gesture="RightDoubleClick" Command="{Binding OpenNewWindow}" ></MouseBinding>
+                </Button.InputBindings>
+            </Button>
+            
         </StackPanel>
+        
     </Grid>
 </Window>
