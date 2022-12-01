@@ -48,17 +48,29 @@ namespace SytleAndCommands
             set { age = value; OnPropertyChanged(); }
         }
 
+        private string userText;
+
+        public string UserText
+        {
+            get { return userText; }
+            set { userText = value; OnPropertyChanged(); }
+        }
+
+
         public MessageCommand MessageCommand { get; set; }
         public MessageCommand OpenNewWindow { get; set; }
 
         public RelayCommand ShowDataCommand { get; set; }
         public RelayCommand UsernameEnterCommand { get; set; }
         public RelayCommand PasswordEnterCommand { get; set; }
+        public RelayCommand SubmitCommand { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             //DataContext = new DataObject();
             this.DataContext = this;
+
+            UserText = string.Empty;
 
             //MessageCommand = new MessageCommand(() =>
             //{
@@ -83,10 +95,6 @@ namespace SytleAndCommands
             //{
             //    MessageBox.Show("Test");
             //});
-
-
-
-
             UsernameEnterCommand = new RelayCommand((o) =>
             {
                 var myStackPanel = o as StackPanel;
@@ -102,7 +110,7 @@ namespace SytleAndCommands
                 {
                     usernameTxtB.BorderBrush = Brushes.SpringGreen;
                     usernameTxtB.BorderThickness = new Thickness(2);
-
+         
                     var passwordTxtb=myStackPanel.Children[1] as TextBox;
                     passwordTxtb.Focus();
                 }
@@ -114,7 +122,19 @@ namespace SytleAndCommands
                 var button = myStackPanel.Children[2] as Button;
                 button.Focus();
             });
-            
+
+
+            SubmitCommand = new RelayCommand((o) =>
+            {
+                var text = o as string;
+                if (text == "admin")
+                {
+                    MessageBox.Show("Correct");
+                }
+            }, (o) =>
+            {
+                return UserText.Length > 8;
+            });
 
         }
     }

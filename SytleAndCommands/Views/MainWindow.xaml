@@ -127,7 +127,9 @@
             <TextBox x:Name="usernameTxtB"
                      BorderThickness="2" HorizontalAlignment="Center" Width="300"
                      BorderBrush="SpringGreen"
-                     TabIndex="0" FontSize="25" FontWeight="ExtraBlack">
+                     TabIndex="0" FontSize="25" FontWeight="ExtraBlack"
+                     Text="{Binding UserText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     >
                 <TextBox.InputBindings>
                     <KeyBinding Key="Enter" Command="{Binding UsernameEnterCommand}" CommandParameter="{Binding ElementName=myStackPanel}"></KeyBinding>
                 </TextBox.InputBindings>
@@ -142,7 +144,7 @@
             </TextBox>
 
 
-            <Button Name="submitBtn">Submit</Button>
+            <Button Command="{Binding SubmitCommand}" CommandParameter="{Binding ElementName=passwordTxtB,Path=Text}" Name="submitBtn">Submit</Button>
             
         </StackPanel>
         
