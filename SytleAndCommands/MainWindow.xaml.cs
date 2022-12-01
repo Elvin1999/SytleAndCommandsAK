@@ -20,9 +20,14 @@ namespace SytleAndCommands
     /// </summary>
     public partial class MainWindow : Window
     {
+        public class DataObject
+        {
+            public int TheValue { get; set; }
+        }
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new DataObject();
         }
     }
 }
